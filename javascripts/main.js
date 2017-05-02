@@ -40,11 +40,30 @@ $(document).ready(function(){
 
 
   //delete todo
-
+	  $('.main-container').on('click', '.delete', (event)=> {
+			const id = event.target.id;
+			FbApi.deleteTodo(id).then(() => {
+				FbApi.writeDom();
+				countTask();
+			}).catch((error) => {
+	  		console.log("delete error", error);
+	  	});
+		});
 
 
   //edit todo
+	$('.main-container').on('click', '.edit', (event)=> {
+		const id = event.target.id;
 
+		FbApi.editTodo(id).then((oldText) => {
+			$('.list-container').addClass('hide');
+			$('.new-container').removeClass('hide');
+			$('#add-todo-text').val(oldText);
+		}).catch((error) => {
+			console.log("delete error", error);
+		});
+
+	});
 
 
 

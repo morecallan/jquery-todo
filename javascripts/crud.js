@@ -31,10 +31,23 @@ var FbApi = ((oldCrap) => {
 
 oldCrap.checker = (id) => {
 	return new Promise((resolve, reject) =>{
-		FbApi.setChecked(id);	
+		FbApi.setChecked(id);
 		resolve();
 	});
-	
+};
+
+oldCrap.deleteTodo = (id) => {
+	return new Promise((resolve, reject) => {
+		FbApi.duhlete(id);
+		resolve();
+	});
+};
+
+oldCrap.editTodo = (id) => {
+	return new Promise((resolve, reject) => {
+		let oldText = FbApi.duhlete(id);
+		resolve(oldText);
+	});
 };
 
 
